@@ -1,7 +1,7 @@
 // ==============================
 // CONFIG
 // ==============================
-const WEBHOOK_URL = "https://zxjm2505.app.n8n.cloud/webhook-test/as";
+const WEBHOOK_URL = "https://zxjm2505.app.n8n.cloud/webhook/as";
 
 // ==============================
 // FORM REFERENCES
@@ -31,18 +31,10 @@ async function sendToWebhook(payload, outputBox) {
         // Handle wrapper 'output' if present
         const out = json.output || json;
 
-        // Build tidy HTML output
-        let html = "<h3>User Input</h3><ul>";
-        for (const [key, value] of Object.entries(payload.body || payload)) {
-            if (key !== "analysis" && key !== "recommendation") {
-                html += `<li><strong>${key.replace(/_/g, ' ')}:</strong> ${value}</li>`;
-            }
-        }
-        html += "</ul>";
-        html += `<br></br>`
-        html += "<h3>AI Analysis</h3>";
+        // Only display AI analysis and recommendation
+        let html = "<h3>AI Analysis</h3>";
         html += `<p>${out.analysis}</p>`;
-        html += `<br></br>`
+        html += "<br>";
         html += "<h3>AI Recommendation</h3>";
         html += `<p>${out.recommendation}</p>`;
 
@@ -62,14 +54,12 @@ solarForm.addEventListener("submit", async (e) => {
     const fd = new FormData(solarForm);
 
     const data = {
-        body: {  // wrap in 'body' to match AI parser
-            Building_Name: fd.get("building_name"),
-            Location: fd.get("location"),
-            Roof_Area_: Number(fd.get("roof_area_m2")),
-            Roof_Orientation: fd.get("roof_orientation") ,
-            Monthly_Consumption_kWh: Number(fd.get("monthly_consumption_kwh")),
-            Installation_Cost: Number(fd.get("installation_cost")),
-        }
+        Building_Name: fd.get("building_name"),
+        Location: fd.get("location"),
+        Roof_Area_: Number(fd.get("roof_area_m2")),
+        Roof_Orientation: fd.get("roof_orientation"),
+        Monthly_Consumption_kWh: Number(fd.get("monthly_consumption_kwh")),
+        Installation_Cost: Number(fd.get("installation_cost")),
     };
 
     await sendToWebhook(data, feature1Output);
@@ -84,13 +74,11 @@ energyForm.addEventListener("submit", async (e) => {
     const fd = new FormData(energyForm);
 
     const data = {
-        body: {
-            battery_capacity: Number(fd.get("battery_capacity") || 0),
-            panel_capacity: Number(fd.get("panel_capacity") || 0),
-            sell_rate: Number(fd.get("sell_rate") || 0),
-            avg_usage: Number(fd.get("avg_usage") || 0),
-            gov_incentive: Number(fd.get("gov_incentive") || 0),
-        }
+        battery_capacity: Number(fd.get("battery_capacity") || 0),
+        panel_capacity: Number(fd.get("panel_capacity") || 0),
+        sell_rate: Number(fd.get("sell_rate") || 0),
+        avg_usage: Number(fd.get("avg_usage") || 0),
+        gov_incentive: Number(fd.get("gov_incentive") || 0),
     };
 
     await sendToWebhook(data, feature2Output);
