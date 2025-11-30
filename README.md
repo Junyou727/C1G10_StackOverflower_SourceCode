@@ -80,7 +80,8 @@ Forecast energy production and rebates using predictive models.
 
 ## ⚙️ Technology Stack
 
-- **Frontend:** HTML, CSS, JavaScript  
+- **Frontend:** HTML, CSS, JavaScript
+  <img width="1287" height="860" alt="image" src="https://github.com/user-attachments/assets/d83c493a-05e1-43c1-a0db-4341bf27b688" />
 - **Backend:** FastAPI, Python  
 - **Machine Learning:** Scikit-learn (Random Forest Regressor)
 - **AI Automation** n8n
@@ -133,4 +134,5 @@ For questions or support, contact...
 2. Austin (austinteo111@gmail.com)
 3. Law Jun You (junyoulaw727@gmail.com)
 4. Ku Xiang Jin (kuxiangjin1004@gmail.com)
+
 
