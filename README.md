@@ -93,8 +93,8 @@ Forecast energy production and rebates using predictive models.
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/YourUsername/SolarOptimizationPrototype.git
-cd SolarOptimizationPrototype
+git clone https://github.com/Junyou727/C1G10_StackOverflower_SourceCode.git
+cd C1G10_StackOverflower_SourceCode
 ```
 
 2. **Create & activate a virtual environment:**
@@ -131,4 +131,5 @@ For questions or support, contact...
 2. Austin (austinteo111@gmail.com)
 3. Law Jun You (junyoulaw727@gmail.com)
 4. Ku Xiang Jin (kuxiangjin1004@gmail.com)
+
 
